@@ -8,6 +8,8 @@ from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework import mixins, generics, viewsets
 from django.shortcuts import get_object_or_404
+from blogs.models import Blog, Comment, Reaction
+from blogs.serializers import BlogSerializer, CommentSerializer, ReactionSerializer
 
 @api_view(['GET', 'POST'])
 def membersView(request):
@@ -245,3 +247,15 @@ class EmployeeViewset(viewsets.ViewSet):
 class EmployeeViewset(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+class BlogViewset(viewsets.ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+class CommentViewset(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+class ReactionViewset(viewsets.ModelViewSet):
+    queryset = Reaction.objects.all()
+    serializer_class = ReactionSerializer
